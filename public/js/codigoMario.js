@@ -68,12 +68,12 @@ var pausemusic;
 function preload()
 {
   //adaptar a la pantalla
-  juego.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+  juego.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
 
   //escalar
-  juego.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-  // juego.scale.pageAlignHorizontal = true;
-  // juego.scale.pageAlignVertical = true;
+  // juego.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+  // juego.scale.pageAlignHorizontally  = true;
+  // juego.scale.pageAlignVertically  = true;
 
   //imagenes
   juego.load.image('fondo', 'img/fondo.png');
@@ -91,9 +91,9 @@ function preload()
   juego.load.spritesheet("puerta", "img/puerta.png",40,66);
   juego.load.spritesheet("iconoLlave", "img/iconoLlave.png",52,39);
   juego.load.spritesheet("objetivo", "img/objetivo.png",64,61);
-  juego.load.spritesheet("btnLeft", "img/btnLeft.png",120,120);
-  juego.load.spritesheet("btnRight", "img/btnRight.png",120,120);
-  juego.load.spritesheet("btnJump", "img/btnJump.png",120,120);
+  juego.load.spritesheet("btnLeft", "img/btnLeft.png",160,160);
+  juego.load.spritesheet("btnRight", "img/btnRight.png",160,160);
+  juego.load.spritesheet("btnJump", "img/btnJump.png",160,160);
   juego.load.spritesheet("play", "img/play.png",120,120);
   juego.load.spritesheet("pause", "img/pause.png",120,120);
 
@@ -140,26 +140,34 @@ function create()
   if (screen.width < 1024){
     // create our virtual game controller buttons 
     //game, x, y, key, callback, callbackContext, overFrame, outFrame, downFrame, upFrame
-    btnJump = juego.add.button(850, 420, 'btnJump', null, this, 0, 1, 0, 1);
+    btnJump = juego.add.button(830, 360, 'btnJump', null, this, 0, 1, 0, 1);
       //our buttons should stay on the same place  
     btnJump.fixedToCamera = true;
     btnJump.alpha = 0.4;
+    btnJump.scale.y = 1.3
+    btnJump.scale.x = 1.3
 
-    btnJump2 = juego.add.button(50, 420, 'btnJump', null, this, 0, 1, 0, 1);
+    btnJump2 = juego.add.button(30, 360, 'btnJump', null, this, 0, 1, 0, 1);
       //our buttons should stay on the same place  
     btnJump2.fixedToCamera = true;
     btnJump2.alpha = 0.4;
+    btnJump2.scale.y = 1.3
+    btnJump2.scale.x = 1.3
 
-    btnRight = juego.add.button(850, 510, 'btnRight', null, this, 0, 1, 0, 1);
+    btnRight = juego.add.button(830, 490, 'btnRight', null, this, 0, 1, 0, 1);
     btnRight.fixedToCamera = true;
     btnRight.alpha = 0.4;
+    btnRight.scale.y = 1.3
+    btnRight.scale.x = 1.3
     //movimiento con viartual controller
     btnRight.events.onInputDown.add(function(){movRight=true});
     btnRight.events.onInputUp.add(function(){movRight=false});
 
-    btnLeft = juego.add.button(50, 510, 'btnLeft', null, this, 0, 1, 0, 1);
+    btnLeft = juego.add.button(30, 490, 'btnLeft', null, this, 0, 1, 0, 1);
     btnLeft.fixedToCamera = true;
     btnLeft.alpha = 0.4;
+    btnLeft.scale.y = 1.3
+    btnLeft.scale.x = 1.3
     btnLeft.events.onInputDown.add(function(){movLeft=true});
     btnLeft.events.onInputUp.add(function(){movLeft=false}); 
   }
